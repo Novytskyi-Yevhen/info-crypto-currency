@@ -1,0 +1,48 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  dev:
+    container_name: nestjs_api
+    image: nestjs-api:1.0.0
+    build:
+      context: .
+      target: development
+      dockerfile: ./Dockerfile
+    command: npm run start:dev
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    restart: unless-stopped
+    # networks:
+    #   - nest
+# db:
+  #   image: postgres
+  #   restart: always
+  #   environment:
+  #     POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}" 
+  #     POSTGRES_DB: "${POSTGRES_DB_NAME}"
+  #     POSTGRES_USER: "${POSTGRES_USER}"
+  #   ports:
+  #     - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+  #   networks:
+  #     - nest
+
+  # redis:
+  #   image: "redis:alpine"
+  #   ports:
+  #     - "6379:6379"
+  #   networks:
+  #     - nest
+ 
+# networks:
+#   nest:
+#     ipam:
+#      config:
+#        - subnet: 172.22.0.1/16
+#          gateway: 172.22.0.1
+
+
