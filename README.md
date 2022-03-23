@@ -31,8 +31,14 @@
 ```bash
 $ npm install
 ```
+## Running the app in docker
 
-## Running the app
+```bash
+$ docker-compose build
+$ docker-compose up
+```
+
+## Running the app local
 
 ```bash
 # development
